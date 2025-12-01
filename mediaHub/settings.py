@@ -74,7 +74,7 @@ ROOT_URLCONF = 'mediaHub.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], # modification will be here i.e. register global templates folder
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,6 +85,9 @@ TEMPLATES = [
         },
     },
 ]
+# URL packaging for static and media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 WSGI_APPLICATION = 'mediaHub.wsgi.application'
 

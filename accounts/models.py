@@ -10,7 +10,7 @@ class User(AbstractUser):
     )
 
     # table columns
-    user_type = models.CharField(max_length=10, choice=USER_TYPE_CHOICES)
+    user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
     profile_image = models.ImageField(upload_to='profiles/', null=True, blank=True)
     bio = models.TextField(max_length=500, blank=True, null=True)
 

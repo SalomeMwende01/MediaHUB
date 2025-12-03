@@ -6,13 +6,13 @@ from .models import User
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs= {'class':'forms-contol',
                                                                             'placeholder':'Email'}))
-    user_type = forms.ChoiceField(choices=User.USER_TYPE_CHOICES, widget=forms.select(attrs={
+    user_type = forms.ChoiceField(choices=User.USER_TYPE_CHOICES, widget=forms.Select(attrs={
         'class' : 'form-control'
     }))
 
     class Meta:
         model = User
-        field = ('username', 'email', 'user_type', 'password1', 'password2') # simply the form fields my user will fill
+        fields = ('username', 'email', 'user_type', 'password1', 'password2') # simply the form fields my user will fill
         widgets = {
             'username' : forms.TextInput(attrs={
                 'class' : 'form-control',

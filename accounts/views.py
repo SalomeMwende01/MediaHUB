@@ -71,13 +71,13 @@ def profile_view(request):
             form = UserProfileForm(instance=request.user)
 
         return render(request, 'accounts/profile.html', {'form' : form})
-    class CustomPasswordResetView(PasswordResetView):
-        # interface change
-        template_name = 'accounts/password_react.html'
-        email_template_name = 'accounts/password_reset_email.html'
-        success_url = reverse_lazy('accounts:password_reset_done') # this will launch the confirm view
+class CustomPasswordResetView(PasswordResetView):
+    # interface change
+    template_name = 'accounts/password_reset.html'
+    email_template_name = 'accounts/password_reset_email.html'
+    success_url = reverse_lazy('accounts:password_reset_done') # this will launch the confirm view
 
-    class CustomPasswordResetConfirmView(PasswordResetConfirmView):
-        # interface change
-        template_name = 'accounts/password_reset_confirm.html'
-        success_url = reverse_lazy('accounts:password_reset_complete') # this will launch when password is updated
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    # interface change
+    template_name = 'accounts/password_reset_confirm.html'
+    success_url = reverse_lazy('accounts:password_reset_complete') # this will launch when password is updated

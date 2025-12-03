@@ -46,3 +46,17 @@ Authorization = access privileges - role based authorization, token based author
 7. Create the templates
    - create a templates folder - within the app
    - create a global templates folder - register it's configuration in the settings.py file
+8. Make databases migrations and then populate the templates
+   python manage.py makemigrations
+   python manage.py migrate
+
+### Template creation
+
+1. Configuration level file : base.html
+
+   - Defining your blocks : title, extra_css, content (most important),footer, extra_js
+   - Linking to global stylesheet / style lib. (bootstrap)
+   - Link to global js files
+
+2. Create the other pages by simply extending(extends) the configs done on 1.
+   Populate what is dynamic using block - the content is changing.

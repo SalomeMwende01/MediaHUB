@@ -20,27 +20,29 @@ Media sharing platform that has role based access
 - Media_assets : uploads tasks, displays, updates
 
 ### Steps
+
 - Install the libraries :
-    pip install libraryname
-    pip install -r requirements.txt
+  pip install libraryname
+  pip install -r requirements.txt
 - Create our apps
 - Configure our project settings
   - register our apps
   - register cloudinary
   - register a custom authentication process
-  - emails registry 
+  - emails registry
 
 ### Authentication and Authorization (accounts app)
+
 Authentication = identify identification, who are you?
 Authorization = access privileges - role based authorization, token based authorization
 
 1. Create our custom user model - models.py
 2. Extend the integrate form captures - forms.py
 3. Create the views action for registration and login, logout and profile view,
-custompasswordresetview, custompasswordresetconfirmview - views.py
+   custompasswordresetview, custompasswordresetconfirmview - views.py
 4. Register the views actions as URL route - urls.py
 5. Register the models for admin to use and manage content on -admin.py
 6. Register the apps url to the projects urls - project/urls.py
 7. Create the templates
-    - create a templates folder - within the app
-    - create a global templates folder - register it's configuration in the settings.py file
+   - create a templates folder - within the app
+   - create a global templates folder - register it's configuration in the settings.py file

@@ -20,10 +20,10 @@ def register_view(request):
             login(request,user) ## calls the login action
             messages.success(request, f'Welcome {user.username}! Your account has been successfully created!')
             return redirect('media_assets:dashboard')
-        else:
-            form = UserRegistrationForm() # default http method here GET
+    else:
+        form = UserRegistrationForm() # default http method here GET
 
-        return render(request, 'accounts/register.html', {'form', form})
+    return render(request, 'accounts/register.html', {'form': form})
 
 def login_view(request):
     # validate if the user is already authenticated
@@ -31,23 +31,23 @@ def login_view(request):
         return redirect('media_assets:dashboard')
     
     if request.method == 'POST': # user wants to register
-        form = UserLoginForm(request.POST)
+        form = UserLoginForm(request, data=request.POST)
         # if user has filled in all requires inputs
         if form.is_valid():
             # pick up entries for username and password
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             # djangomethod authenticate to authenticate and login my user
-            user = authenticate(username,password) # queries db looking for the user with mentioned credentials
+            user = authenticate(request, username=username, password=password) # queries db looking for the user with mentioned credentials
             # is the user found not in db
             if user is not None:
                 login(request,user)
                 messages.success(request, f'Welcome back {username}')
                 return redirect('media_assets:dashboard')
-        else:
-            form = UserLoginForm() # default http method here is GET
+    else:
+        form = UserLoginForm(request) # default http method here is GET
 
-        return render(request, 'accounts/login.html', {'form', form})
+    return render(request, 'accounts/login.html', {'form': form})
     
 
 # logout -> check if our user is logged in - @Login_required
